@@ -1,11 +1,11 @@
 <?php
-class Login{
+class Register{
     private $db;
     private $users;
 
     public function __construct() {
         $this->initialize();
-        $this->login();
+        $this->register();
     }
 
     public function initialize(){
@@ -19,44 +19,33 @@ class Login{
         $conex = new ConexionDB();
         $this->db = $conex->getConexionDB();
         $this->users = new Users($this->db);
-        session_start();
     }
 
-    public function login(){
+    public function register(){
         $data = json_decode(file_get_contents("php://input"));
         if (!empty($data->user_name) && !empty($data->password)) {
             $user_name = $data->user_name;
             $password = $data->password;
             
-            $result = $this->users->loginUsers(
+            $result = $this->users->createUsers(
                 $user_name,
                 $password
             );
         
+            // Verificar el resultado de la operación
             if ($result) {
-                $_SESSION["user_name"] = $user_name;
-                $hola=$this->getSessionInfo();
                 http_response_code(201);
-                echo json_encode(array("message" => "Bienvenido ",$hola," has sido logueado"));
+                echo json_encode(array("message" => "El usuario ha sido creado"));
             } else {
                 http_response_code(503);
-                echo json_encode(array("message" => "No se puede loguear el usuario"));
+                echo json_encode(array("message" => "No se puede crear el usuario"));
             }
         } else {
             http_response_code(400);
-            echo json_encode(array("message" => "No se puede loguear el usuario,porque los datos están incompletos"));
-        }
-    }
-
-    public function getSessionInfo() {
-        if (isset($_SESSION["user_name"])) {
-            return $_SESSION["user_name"];
-        } else {
-            return null;
+            echo json_encode(array("message" => "No se puede crear elusuario,porque los datos están incompletos"));
         }
     }
 
 }
-$Login = new Login();
-$sessionInfo = $Login->getSessionInfo();
+$Register = new Register();
 ?>

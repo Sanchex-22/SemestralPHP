@@ -20,3 +20,7 @@ Create Table User(
 );
 
  insert into User (user_name, password) values ("carlos","1234");
+ 
+ use inventario;
+ select*from products;
+  select*from user;
