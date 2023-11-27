@@ -103,7 +103,7 @@ $username = $_SESSION["user_name"];
       </div>
 
       <div>
-        <button>Eliminar</button>
+        <button class="bg-red-500 text-white rounded-lg p-2">Eliminar</button>
       </div>
       
     </div>

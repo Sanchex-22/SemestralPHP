@@ -97,7 +97,7 @@ $username = $_SESSION["user_name"];
         </div>
 
         <div>
-          <div><?php echo $producto['name']?></div>
+          <div class="text-black"><?php echo $producto['name']?></div>
           <div><?php echo $producto['description']?></div>
           <div>categoria (<?php echo $producto['category']?>)</div>
           <div>quedan: <?php echo $producto['quantity']?></div>
@@ -107,6 +107,12 @@ $username = $_SESSION["user_name"];
       <div>
         <h5>creado el <?php echo $producto['create_date']?></h5>
         <h5>modificado el <?php echo $producto['modified_date']?></h5>
+        <!-- <button class="bg-red-500 text-white rounded-lg p-2">Eliminar</button> -->
+        <form id="eliminate" class="bg-red-500 text-white rounded-lg p-2 w-[100px]">
+          <input hidden id="cod" value="<?php echo $producto['id']; ?>">
+          <button type="submit" class="btn-eliminar">Eliminar</button>
+        </form>
+        <a href="edit_task.php?id=<?php echo $tarea['cod']; ?>" class="bg-gray-500 text-white rounded-lg p-2.5">Editar</a>
       </div>
       
     </div>
