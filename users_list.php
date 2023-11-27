@@ -11,7 +11,7 @@ $username = $_SESSION["user_name"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Users</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -33,8 +33,8 @@ $username = $_SESSION["user_name"];
     <nav class="w-full flex justify-between align-center p-5 bg-violet2">
       <img src="#" alt="#">
       <ul class="flex">
-        <li class="ml-5"><a href="#">Productos</a></li>
-        <li class="ml-5"><a href="users_list.php">Usuarios</a></li>
+        <li class="ml-5"><a href="dashboard.php">Productos</a></li>
+        <li class="ml-5"><a href="#">Usuarios</a></li>
         <li class="ml-5">Info</li>
         <li class="ml-5"><?php echo $_SESSION["user_name"]?></li>
         <form class="ml-5 mr-5" action="logout.php" method="post">
@@ -70,7 +70,7 @@ $username = $_SESSION["user_name"];
     </div>
 
     <?php
-      $api_url = "http://localhost/SemestralPHP/api/products/getAll.php";
+      $api_url = "http://localhost/SemestralPHP/api/user/getList.php";
       $context = stream_context_create([
       'http' => [
         'method' => 'GET',
@@ -83,7 +83,7 @@ $username = $_SESSION["user_name"];
         die('Error al realizar la solicitud GET');
       }
       $json_response = json_decode($response, true);
-      $productos = $json_response['products'];
+      $productos = $json_response['users'];
             // echo '<pre>';
             // print_r($productos);
             // echo '</pre>';
@@ -97,16 +97,13 @@ $username = $_SESSION["user_name"];
         </div>
 
         <div>
-          <div><?php echo $producto['name']?></div>
-          <div><?php echo $producto['description']?></div>
-          <div>categoria (<?php echo $producto['category']?>)</div>
-          <div>quedan: <?php echo $producto['quantity']?></div>
+            <div><?php echo $producto['id']?></div>
+            <div><?php echo $producto['user_name']?></div>
         </div>
       </div>
 
       <div>
-        <h5>creado el <?php echo $producto['create_date']?></h5>
-        <h5>modificado el <?php echo $producto['modified_date']?></h5>
+        <button>Eliminar</button>
       </div>
       
     </div>
