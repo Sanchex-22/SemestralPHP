@@ -35,7 +35,6 @@ class Login{
         
             if ($result) {
                 $_SESSION["user_name"] = $user_name;
-                $hola=$this->getSessionInfo();
                 http_response_code(201);
                 echo json_encode(array("message" => "Bienvenido ".$_SESSION["user_name"]." has sido logueado"));
             } else {
