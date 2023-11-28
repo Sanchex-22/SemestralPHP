@@ -68,20 +68,20 @@ $username = $_SESSION["user_name"];
             $productos = $json_response['product'];
 
             foreach ($productos as $producto):
-                $name = $producto['name'];
-                $description = $producto['description'];
-                $category = $producto['category'];
-                $quantity = $producto['quantity'];
-                $create_date = $producto['create_date'];
-                $modified_date = $producto['modified_date'];
+                $get_name = $producto['name'];
+                $get_description = $producto['description'];
+                $get_category = $producto['category'];
+                $get_quantity = $producto['quantity'];
+                $get_create_date = $producto['create_date'];
+                $get_modified_date = $producto['modified_date'];
             endforeach;
         ?>
-        <form id="create" class="bg-white formulario flex flex-col justify-center items-center p-10" action="" method="post">
-                <h2 class="text-center bold mb-6">Editar (<?php echo $name ?>)</h2>
+        <form id="edit" class="bg-white formulario flex flex-col justify-center items-center p-10" action="" method="post">
+                <h2 class="text-center bold mb-6">Editar (<?php echo $get_name ?>)</h2>
     
                 <div class="mb-6 w-full">
                     <label for="name">Nombre</label>
-                    <input class="w-full border border-violet2 p-2" type="text" id="name" name="name" value="<?php echo $name?>" required>
+                    <input class="w-full border border-violet2 p-2" type="text" id="name" name="name" value="<?php echo $get_name?>" required>
                 </div>
     
                 <div class="mb-6 w-full">
@@ -92,6 +92,7 @@ $username = $_SESSION["user_name"];
                 <div class="mb-6 w-full">
                     <select
                     id="category_filter"
+                    name="category_filter"
                     class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     >
                     <option value="null">Selecciona una Categoria</option>
@@ -116,6 +117,51 @@ $username = $_SESSION["user_name"];
                     <input class="w-full p-2 rounded bg-violet1 text-white hover:bg-violet2 hover:text-black" type="submit" value="Añadir">
                 </div>
             </form>
+            <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $name = $_POST["name"];
+                $description = $_POST["description"];
+                $category = $_POST["category_filter"];
+                $quantity = $_POST["quantity"];
+
+                $fechaHoraActual = new DateTime();
+                $fechaHoraString = $fechaHoraActual->format('Y-m-d H:i:s');
+            
+
+                $data = [
+                    'id' => $product_id,
+                    'name'=> $name,
+                    'description' => $description,
+                    'category' => $category,
+                    'quantity' => $quantity,
+                    'create_date'=>$get_create_date,
+                    'modified_date'=>$fechaHoraString,
+                ];
+                
+                $api_url = "http://localhost/SemestralPHP/api/products/edit.php";
+                $context = stream_context_create([
+                    'http' => [
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/json',
+                    'content' => json_encode($data),
+                    ],
+                ]);
+
+                $response = file_get_contents($api_url, false, $context);
+
+                if ($response === FALSE) {
+                    // Manejar el error de la solicitud
+                    echo 'Error al realizar la solicitud POST';
+                } else {
+                    echo '<script>
+                    setTimeout(function(){
+                        window.location.href = "dashboard.php";
+                    }, 3000);
+                    </script>';
+                }
+            }
+            ?>
+
         </div>
     </div>
 </body>
