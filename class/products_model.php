@@ -57,24 +57,25 @@
             }
         }
 
-        public function editProducts($idd,$name, $description, $category, $quantity, $create_date, $modified_date){
+        public function editProducts($id,$name, $description, $category, $quantity, $create_date, $modified_date){
             try{
                 $check_query = "SELECT id FROM Products WHERE id = :id";
                 $check_stmt = $this->conn->prepare($check_query);
-                $check_stmt->bindParam(":id", $idd);
+                $check_stmt->bindParam(":id", $id);
                 $check_stmt->execute();
 
                 if ($check_stmt->rowCount() > 0) {
-                    $update_query = "UPDATE tareas SET 
+                    $update_query = "UPDATE Products SET 
                     name=:name, 
                     description=:description, 
                     category=:category, 
                     quantity=:quantity,
-                    -- create_date=:create_date,
+                    create_date=:create_date,
                     modified_date=:modified_date
                     WHERE id=:id";
 
                     $update_stmt = $this->conn->prepare($update_query);
+                    $id = htmlspecialchars(strip_tags($id));
                     $name = htmlspecialchars(strip_tags($name));
                     $description = htmlspecialchars(strip_tags($description));
                     $category = htmlspecialchars(strip_tags($category));
@@ -82,6 +83,7 @@
                     $create_date = htmlspecialchars(strip_tags($create_date));
                     $modified_date = htmlspecialchars(strip_tags($modified_date));
 
+                    $update_stmt->bindParam(':id', $id);
                     $update_stmt->bindParam(':name', $name);
                     $update_stmt->bindParam(':description', $description);
                     $update_stmt->bindParam(':category', $category);
@@ -99,8 +101,15 @@
                         return false; 
                     }
                 }
+                else{
+                    http_response_code(404);
+                    echo json_encode(array("message" => "El producto no existe"));
+                    return false;
+                }
             }
             catch(PDOException $e){
+                http_response_code(503);
+                echo json_encode(array("message" => "Error al actualizar el producto: " . $e->getMessage()));
                 return false;
             }
         }
