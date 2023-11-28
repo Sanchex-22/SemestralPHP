@@ -63,13 +63,13 @@ $username = $_SESSION["user_name"];
           </select>
         </div>
         <div class="flex justify-center align-center">
-          <form name="formsearch" action="" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
+          <form name="formsearch" action="search.php" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
               <input placeholder="search" 
                 id="search" name="search" 
                 type="search" defaultValue='search' 
                 class="text-gray-400 rounded-sm" 
                 value=''/>
-              <button type="submit" value="search" class="bg-white w-full flex justify-center items-center" title="null">
+              <button type="submit" value="search" class="bg-white w-full flex justify-center items-center" title="Enviar">
               </button>
           </form>
         </div>
@@ -82,6 +82,10 @@ $username = $_SESSION["user_name"];
     </style>
     <div class="scroll-container h-screen-full">
     <?php
+      if (isset($_GET['buscar'])) {
+        $terminoBusqueda = $_GET['buscar'];
+    
+    } else {
       $api_url = "http://localhost/SemestralPHP/api/products/getAll.php";
       $context = stream_context_create([
       'http' => [
@@ -135,7 +139,7 @@ $username = $_SESSION["user_name"];
         
       </div>
     
-    <?php endforeach; ?>
+    <?php endforeach; }?>
     </div>
     <script type="module">
       import { productsServices } from './products_services.js';

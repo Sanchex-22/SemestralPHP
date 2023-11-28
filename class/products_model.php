@@ -29,6 +29,14 @@
             $stmt->execute();
             return $stmt;
         }
+        public function getSearchProducts($search){
+            $sql = "SELECT * FROM Products WHERE id LIKE :search OR description LIKE :search";
+            $stmt = $this->conn->prepare($sql);
+            $searchParam = "%$search%";
+            $stmt->bindParam(':search', $searchParam, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt;
+        }
 
         public function createProducts($name, $description, $category, $quantity, $create_date, $modified_date){
             try{
