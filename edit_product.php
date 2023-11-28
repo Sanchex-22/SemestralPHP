@@ -46,14 +46,42 @@ $username = $_SESSION["user_name"];
         <div>
         <?php
             if (isset($_GET['id'])) { $product_id = $_GET['id']; }
-            echo $product_Id
+
+            $data = [
+                'id' => $product_id,
+            ];
+
+            $api_url = "http://localhost/SemestralPHP/api/products/getOne.php";
+            $context = stream_context_create([
+            'http' => [
+              'method' => 'POST',
+              'header' => 'Content-Type: application/json',
+              'content' => json_encode($data),
+            ],
+            ]);
+      
+            $response = file_get_contents($api_url, false, $context);
+            if ($response === FALSE) {
+              die('Error al realizar la solicitud GET');
+            }
+            $json_response = json_decode($response, true);
+            $productos = $json_response['product'];
+
+            foreach ($productos as $producto):
+                $name = $producto['name'];
+                $description = $producto['description'];
+                $category = $producto['category'];
+                $quantity = $producto['quantity'];
+                $create_date = $producto['create_date'];
+                $modified_date = $producto['modified_date'];
+            endforeach;
         ?>
         <form id="create" class="bg-white formulario flex flex-col justify-center items-center p-10" action="" method="post">
-                <h2 class="text-center mb-6">Añadir Producto</h2>
+                <h2 class="text-center bold mb-6">Editar (<?php echo $name ?>)</h2>
     
                 <div class="mb-6 w-full">
                     <label for="name">Nombre</label>
-                    <input class="w-full border border-violet2 p-2" type="text" id="name" name="name" required>
+                    <input class="w-full border border-violet2 p-2" type="text" id="name" name="name" value="<?php echo $name?>" required>
                 </div>
     
                 <div class="mb-6 w-full">

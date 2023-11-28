@@ -23,7 +23,7 @@
         }
 
         public function getOneProducts($id){
-            $sql = "SELECT * FROM Products WHERE cod = :id";
+            $sql = "SELECT * FROM Products WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->execute();
