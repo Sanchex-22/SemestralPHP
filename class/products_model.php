@@ -32,7 +32,7 @@
 
         public function createProducts($name, $description, $category, $quantity, $create_date, $modified_date){
             try{
-                $sql = "INSERT INTO Products (name, description, category, quantity,create_date, modified_date) VALUES (:name, :description, :category, :quantity, :create_date, :modified_date)";
+                $sql = "INSERT INTO Products (name, description, category, quantity, create_date, modified_date) VALUES (:name, :description, :category, :quantity, :create_date, :modified_date)";
                 
                 $stmt = $this->conn->prepare($sql);
                 

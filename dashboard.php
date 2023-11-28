@@ -116,7 +116,7 @@ $username = $_SESSION["user_name"];
             <input hidden id="<?php echo $inputId; ?>" value="<?php echo $producto['id']; ?>">
             <button type="submit" class="btn-eliminar">Eliminar</button>
           </form>
-          <a href="edit_task.php?id=<?php echo $producto['id']; ?>" class="bg-gray-500 text-white rounded-lg p-2  m-2">Editar</a>
+          <a href="edit_product.php?id=<?php echo $producto['id']; ?>" class="bg-gray-500 text-white rounded-lg p-2  m-2">Editar</a>
         </div>
       </div>
       
