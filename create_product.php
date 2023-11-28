@@ -30,18 +30,24 @@ $username = $_SESSION["user_name"];
 </head>
 <body>
     <div class="flex flex-col h-screen" >
-        <nav class="w-full flex justify-between align-center p-5 bg-violet2">
-        <img src="#" alt="#">
-        <ul class="flex">
-            <li class="ml-5"><a href="dashboard.php">Productos</a></li>
-            <li class="ml-5"><a href="users_list.php">Usuarios</a></li>
-            <li class="ml-5">Info</li>
-            <li class="ml-5"><?php echo $_SESSION["user_name"]?></li>
-            <form class="ml-5 mr-5" action="logout.php" method="post">
-            <button type="submit" value="Logout" class="btn-logout">Logout</button>
-        </form>
+    <nav class="w-full flex justify-between items-center p-2 bg-violet2 h-[60px]">
+        <ul class="flex items-center">
+            <li>
+                <img src="img/logo.png" alt="logo" style="height: 40px; width: 40px;">
+            </li>
         </ul>
-        </nav>
+        <ul class="flex text-center text-white h-full items-center">
+            <li class="ml-5 hover:underline"><a href="dashboard.php">Productos</a></li>
+            <li class="ml-5 hover:underline"><a href="users_list.php">Usuarios</a></li>
+            <li class="hidden sm:block ml-5 hover:underline">Info</li>
+            <div class="flex items-center ml-5 bg-white mr-5 rounded-r-lg">
+                <li class="hidden sm:block btn-logout pl-2 text-black font-bold uppercase"><?php echo $_SESSION["user_name"]?></li>
+                <form class="ml-2 " action="logout.php" method="post">
+                    <button type="submit" value="Logout" class="btn-logout bg-red-500 rounded-lg pr-2 pl-2">Logout</button>
+                </form>
+            </div>
+        </ul>
+    </nav>
 
         <div>
 
