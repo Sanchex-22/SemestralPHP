@@ -88,7 +88,10 @@ $username = $_SESSION["user_name"];
             // print_r($productos);
             // echo '</pre>';
 
-    foreach ($productos as $producto):?>
+    foreach ($productos as $producto):
+      $formId = "eliminate_" . $producto['id']; 
+      $inputId = "id_" . $producto['id'];?>
+
     <div class="flex justify-between align-center dark:text-gray-500 hover:bg-gray-100 p-5">
       
       <div class="flex items-center">
@@ -104,25 +107,52 @@ $username = $_SESSION["user_name"];
         </div>
       </div>
 
-      <div>
+      <div class="flex flex-col">
         <h5>creado el <?php echo $producto['create_date']?></h5>
         <h5>modificado el <?php echo $producto['modified_date']?></h5>
         <!-- <button class="bg-red-500 text-white rounded-lg p-2">Eliminar</button> -->
-        <form id="eliminate" class="bg-red-500 text-white rounded-lg p-2 w-[100px]">
-          <input hidden id="cod" value="<?php echo $producto['id']; ?>">
-          <button type="submit" class="btn-eliminar">Eliminar</button>
-        </form>
-        <a href="edit_task.php?id=<?php echo $tarea['cod']; ?>" class="bg-gray-500 text-white rounded-lg p-2.5">Editar</a>
+        <div class="flex m-2 text-center">
+          <form id="<?php echo $formId; ?>" class="bg-red-500 text-white rounded-lg p-2 w-[100px] m-2">
+            <input hidden id="<?php echo $inputId; ?>" value="<?php echo $producto['id']; ?>">
+            <button type="submit" class="btn-eliminar">Eliminar</button>
+          </form>
+          <a href="edit_task.php?id=<?php echo $producto['id']; ?>" class="bg-gray-500 text-white rounded-lg p-2  m-2">Editar</a>
+        </div>
       </div>
       
     </div>
     <?php endforeach; ?>
+
+    <script type="module">
+      import { productsServices } from './products_services.js';
+      const productsServiceInstance = new productsServices(); 
+      document.addEventListener('DOMContentLoaded', function() {  
+          <?php foreach ($productos as $producto): ?>
+          const eliminateForm_<?php echo $producto['id']; ?> = document.getElementById('eliminate_<?php echo $producto['id']; ?>');
+          if (eliminateForm_<?php echo $producto['id']; ?>) {
+              eliminateForm_<?php echo $producto['id']; ?>.addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  const id = document.getElementById('id_<?php echo $producto['id']; ?>').value;
+                  const formData = {
+                      id: id,
+                  };
+                  console.log(formData)
+                  productsServiceInstance.deleteProducts(formData);
+              });
+          } else {
+              console.error("Elemento 'eliminate_<?php echo $producto['id']; ?>' no encontrado");
+          }
+          <?php endforeach; ?>
+      });
+  </script>
+
     
     <div class="fixed bottom-4 right-4 rounded-xl bg-violet2 w-[70px] h-[70px] text-white hover:bg-violet3 hover:text-white">
-      <a class="flex justify-center items-center h-full w-full rounded-sm bg-violet2 opacity-75">
+      <a href="create_product.php?id=<?php echo $producto['id']; ?>" class="flex justify-center items-center h-full w-full rounded-sm bg-violet2 opacity-75">
         <h1 class="text-3xl">+</h1>
       </a>
     </div>
+
   </div> 
 </body>
 </html>
