@@ -49,18 +49,22 @@ $username = $_SESSION["user_name"];
         </ul>
     </nav>
     
-    <div class="flex justify-between align-center dark:text-gray-500 pr-5 pl-5 pt-2 pb-2">
+    <div class="flex flex-wrap justify-between align-center dark:text-gray-500 pr-5 pl-5 pt-2 pb-2">
         <div class="flex justify-center align-center">
+        <form name="categoryform" action="" method="GET" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
           <select
-            id="category_filter"
-            class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="category_filter"
+              name="category_filter"
+              class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           >
-          <option value="null">Selecciona una Categoria</option>
-          <option value="celular">Celular</option>
-          <option value="computo">Computadora</option>
-          <option value="linea blanca">Linea Blanca</option>
-          <option value="otros">Otra</option>
+              <option value="null">Selecciona una Categoria</option>
+              <option value="celular">Celular</option>
+              <option value="computo">Computadora</option>
+              <option value="linea blanca">Linea Blanca</option>
+              <option value="otros">Otra</option>
           </select>
+          <button type="submit" name="submit_category" class="bg-white w-full flex justify-center items-center" title="Enviar">Enviar</button>
+      </form>
         </div>
         <div class="flex justify-center align-center">
           <form name="formsearch" action="" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
@@ -84,11 +88,17 @@ $username = $_SESSION["user_name"];
     <?php
     require_once("search.php");
     $consultas = new Consultas();
-      if (isset($_GET['search'])) {
+    if (isset($_GET['search'])) {
         // print("buscaste",$_GET['search']);
         $terminoBusqueda = $_GET['search'];
         $productos = $consultas->Buscar($terminoBusqueda);
-    } else {
+    }
+    elseif (isset($_GET['submit_category'])) {
+      // Se envió el formulario de la categoría
+      $terminoBusqueda = $_GET['category_filter'];
+      $productos = $consultas->Buscar($terminoBusqueda);
+    }  
+    else {
       $productos = $consultas->TraerTodo();
     }
     if ($productos !== null) {
