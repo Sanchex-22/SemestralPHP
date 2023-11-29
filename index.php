@@ -12,20 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inventario</title>
         <script src="tailwind.js"></script>
-        <script>
-          tailwind.config = {
-            theme: {
-              extend: {
-                colors: {
-                  violet1: '#B0578D',
-                  violet2: '#D988B9',
-                  violet3: '#FACBEA',
-                  violet4: '#FFE4D6',
-                }
-              }
-            }
-          }
-        </script>
+        <script src="tailwind_config.js"></script>
     </head>
     <body class="bg-violet4 flex items-center justify-center h-screen p-5">
         <div class="font-bold text-black">

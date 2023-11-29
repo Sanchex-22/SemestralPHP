@@ -13,20 +13,7 @@ $username = $_SESSION["user_name"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <script src="tailwind.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              violet1: '#B0578D',
-              violet2: '#D988B9',
-              violet3: '#FACBEA',
-              violet4: '#FFE4D6',
-            }
-          }
-        }
-      }
-    </script>
+    <script src="tailwind_config.js"></script>
 </head>
 <body>
   <div class="flex flex-col h-screen" >
@@ -107,7 +94,7 @@ $username = $_SESSION["user_name"];
       $inputId = "id_" . $producto['id'];?>
 
     
-      <div class="flex justify-between align-center dark:text-gray-500 hover:bg-gray-100 p-5">
+      <div class="flex justify-between align-center dark:text-gray-500 hover:bg-gray-100 p-5 sm:m-5">
         
         <div class="flex items-center">
           <div class="mr-2">

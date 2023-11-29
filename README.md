@@ -1,5 +1,6 @@
 # SemestralPHP
+## PHP, Tailwind y JavaScript
 
-## nombre: Carlos Sanchez
+### nombre: Carlos Sanchez
 
-## cedula: 8-979-2162
+### cedula: 8-979-2162
