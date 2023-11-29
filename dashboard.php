@@ -31,7 +31,14 @@ $username = $_SESSION["user_name"];
       .arc path {
         stroke: #fff;
       }
+      .scroll-container {
+          max-height: calc(100vh - 135px);
+          overflow-y: auto;
+          margin-bottom: 20px;
+      }
+
   </style>
+  
   <div class="flex flex-col" >
     <nav class="w-full flex justify-between items-center p-2 bg-violet2 h-[60px]">
           <ul class="flex items-center">
@@ -72,14 +79,14 @@ $username = $_SESSION["user_name"];
     
     <div class="col md:flex justify-between">
       <!-- BOX1 -->
-      <div class="hidden sm:block md:w-1/4 flex flex-col border-red-500 text-center">
-        <div class="border border-gray-500">
+      <div class="hidden sm:block md:w-1/4 flex flex-col border border-gray-500 text-center">
+        <div>
           <h2>Productos en Stock</h2>
           <div id="miGrafica" class="flex justify-center items-center pt-5"></div>
         </div>
-        <div class="border border-gray-500">
+        <div>
           <h2>Productos por Categoria</h2>
-          <div id="miGraficaPastel" class="flex justify-center items-center"></div>
+          <div id="miGraficaPastel" class="flex justify-center items-center pt-5 pb-5"></div>
         </div>
       </div>
       <!-- BOX2 -->
