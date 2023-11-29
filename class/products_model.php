@@ -30,7 +30,7 @@
             return $stmt;
         }
         public function getSearchProducts($search){
-            $sql = "SELECT * FROM Products WHERE id LIKE :search OR description LIKE :search";
+            $sql = "SELECT * FROM Products WHERE id LIKE :search OR description LIKE :search OR category LIKE :search OR name LIKE :search";
             $stmt = $this->conn->prepare($sql);
             $searchParam = "%$search%";
             $stmt->bindParam(':search', $searchParam, PDO::PARAM_STR);

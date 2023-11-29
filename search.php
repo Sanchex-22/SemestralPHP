@@ -1,32 +1,58 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $search = $_POST["search"];
+    class Consultas{
 
-        $data = ['id' => $search,];
-
+        public function Buscar($search) {
+            try{
+            $data = ['search' => $search];
+        
             $api_url = "http://localhost/SemestralPHP/api/products/getSearch.php";
             $context = stream_context_create([
+                'http' => [
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/json',
+                    'content' => json_encode($data),
+                ],
+            ]);
+        
+            $response =  @file_get_contents($api_url, false, $context);
+        
+            if ($response === FALSE) {
+                echo 'No se encontro Ningun producto con ese nombre ';
+                return $productos =null;
+            } else {
+                $json_response = json_decode($response, true);
+        
+                if (isset($json_response['products'])) {
+                    $productos = $json_response['products'];
+                    return $productos;
+                } else {
+                    echo 'Producto no encontrado.';
+                    return $productos = null;
+                }
+            }
+            } catch (Exception $e) {
+                echo 'Producto no encontrado.';
+                return $productos = null;
+            }
+        }
+        
+
+        public function TraerTodo(){
+            $api_url = "http://localhost/SemestralPHP/api/products/getAll.php";
+            $context = stream_context_create([
             'http' => [
-              'method' => 'POST',
-              'header' => 'Content-Type: application/json',
-              'content' => json_encode($data),
+                'method' => 'GET',
+                'header' => 'Content-Type: application/json',
             ],
             ]);
-      
+
             $response = file_get_contents($api_url, false, $context);
             if ($response === FALSE) {
-              die('Error al realizar la solicitud GET');
+                die('Error al realizar la solicitud GET');
             }
             $json_response = json_decode($response, true);
-            $productos = $json_response['product'];
-
-            foreach ($productos as $producto):
-                $get_name = $producto['name'];
-                $get_description = $producto['description'];
-                $get_category = $producto['category'];
-                $get_quantity = $producto['quantity'];
-                $get_create_date = $producto['create_date'];
-                $get_modified_date = $producto['modified_date'];
-            endforeach;
+            $productos = $json_response['products'];
+            return $productos;
         }
+    }
 ?>

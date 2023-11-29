@@ -23,7 +23,7 @@ class ApiSearch{
 
     public function getSearch(){
         $data = json_decode(file_get_contents("php://input"));
-        var_dump($data);
+        // var_dump($data);
         if (isset($data->search)) {
             $id = $data->search;
     

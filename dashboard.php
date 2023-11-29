@@ -63,7 +63,7 @@ $username = $_SESSION["user_name"];
           </select>
         </div>
         <div class="flex justify-center align-center">
-          <form name="formsearch" action="search.php" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
+          <form name="formsearch" action="" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
               <input placeholder="search" 
                 id="search" name="search" 
                 type="search" defaultValue='search' 
@@ -82,28 +82,16 @@ $username = $_SESSION["user_name"];
     </style>
     <div class="scroll-container h-screen-full">
     <?php
-      if (isset($_GET['buscar'])) {
-        $terminoBusqueda = $_GET['buscar'];
-    
+    require_once("search.php");
+    $consultas = new Consultas();
+      if (isset($_GET['search'])) {
+        // print("buscaste",$_GET['search']);
+        $terminoBusqueda = $_GET['search'];
+        $productos = $consultas->Buscar($terminoBusqueda);
     } else {
-      $api_url = "http://localhost/SemestralPHP/api/products/getAll.php";
-      $context = stream_context_create([
-      'http' => [
-        'method' => 'GET',
-        'header' => 'Content-Type: application/json',
-      ],
-      ]);
-
-      $response = file_get_contents($api_url, false, $context);
-      if ($response === FALSE) {
-        die('Error al realizar la solicitud GET');
-      }
-      $json_response = json_decode($response, true);
-      $productos = $json_response['products'];
-            // echo '<pre>';
-            // print_r($productos);
-            // echo '</pre>';
-
+      $productos = $consultas->TraerTodo();
+    }
+    if ($productos !== null) {
     foreach ($productos as $producto):
       $formId = "eliminate_" . $producto['id']; 
       $inputId = "id_" . $producto['id'];?>
@@ -139,7 +127,7 @@ $username = $_SESSION["user_name"];
         
       </div>
     
-    <?php endforeach; }?>
+    <?php endforeach;}else{echo ":(";}?>
     </div>
     <script type="module">
       import { productsServices } from './products_services.js';
