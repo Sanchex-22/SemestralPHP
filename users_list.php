@@ -12,8 +12,8 @@ $username = $_SESSION["user_name"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-    <script src="tailwind.js"></script>
-    <script src="tailwind_config.js"></script>
+    <script src="lib/tailwind.js"></script>
+    <script src="lib/tailwind_config.js"></script>
 </head>
 <body>
   <div class="flex flex-col h-screen" >

@@ -11,8 +11,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Inventario</title>
-        <script src="tailwind.js"></script>
-        <script src="tailwind_config.js"></script>
+        <script src="lib/tailwind.js"></script>
+        <script src="lib/tailwind_config.js"></script>
     </head>
     <body class="bg-violet4 flex items-center justify-center h-screen p-5">
         <div class="font-bold text-black">
