@@ -40,35 +40,8 @@ $username = $_SESSION["user_name"];
   </style>
   
   <div class="flex flex-col" >
-    <nav class="w-full flex justify-between items-center p-2 bg-violet2 h-[60px]">
-          <ul class="flex items-center">
-              <li>
-                  <img src="img/logo.png" alt="logo" style="height: 40px; width: 40px;">
-              </li>
-          </ul>
-          <ul class="flex text-center text-white h-full items-center">
-              <div class="hidden md:block">
-                <form name="formsearch" action="" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
-                  <input placeholder="search" 
-                    id="search" name="search" 
-                    type="search" defaultValue='search' 
-                    class="text-gray-400 rounded-sm" 
-                    value=''/>
-                  <button type="submit" value="search" class="bg-white w-full flex justify-center items-center" title="Enviar">
-                  </button>
-                </form>
-              </div>
-              <li class="ml-5 hover:underline"><a href="#">Productos</a></li>
-              <li class="ml-5 hover:underline"><a href="users_list.php">Usuarios</a></li>
-              <li class="hidden sm:block ml-5 hover:underline">Info</li>
-              <div class="flex items-center ml-5 bg-white mr-5 rounded-r-lg">
-                  <li class="hidden sm:block btn-logout pl-2 text-black font-bold uppercase"><?php echo $_SESSION["user_name"]?></li>
-                  <form class="ml-2 " action="logout.php" method="post">
-                      <button type="submit" value="Logout" class="btn-logout bg-red-500 rounded-lg pr-2 pl-2">Logout</button>
-                  </form>
-              </div>
-          </ul>
-    </nav>
+    <?php require_once("navbar.php")?>
+
     <script type="module">
             import { Graficas } from './graficas.js';
             const graficasI = new Graficas(); 
@@ -79,10 +52,10 @@ $username = $_SESSION["user_name"];
     
     <div class="col md:flex justify-between">
       <!-- BOX1 -->
-      <div class="hidden sm:block md:w-1/4 flex flex-col border border-gray-500 text-center">
+      <div class="hidden sm:block md:w-1/4 flex flex-col shadow-xl shadow-violet2 text-center">
         <div>
           <h2>Productos en Stock</h2>
-          <div id="miGrafica" class="flex justify-center items-center pt-5"></div>
+          <div id="miGrafica" class="flex justify-center items-center pt-5 pr-2 pl-2"></div>
         </div>
         <div>
           <h2>Productos por Categoria</h2>
@@ -90,7 +63,7 @@ $username = $_SESSION["user_name"];
         </div>
       </div>
       <!-- BOX2 -->
-      <div class="md:w-3/4">
+      <div class="md:w-3/4 md:shadow-xl md:shadow-black ml-8">
 
       <div class="flex flex-wrap justify-between align-center dark:text-gray-500 pr-5 pl-5 pt-2 pb-2">
           <div class="flex justify-center align-center">
