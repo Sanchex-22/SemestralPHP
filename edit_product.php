@@ -12,7 +12,7 @@ $username = $_SESSION["user_name"];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.js"></script>
     <script>
       tailwind.config = {
         theme: {
