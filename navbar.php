@@ -1,8 +1,8 @@
 
-<nav class="flex justify-between items-center p-4 bg-gradient-to-r from-violet2 via-violet3 to-violet2 h-16">
+<nav class="flex justify-between items-center p-4 bg-gradient-to-r from-violet1 via-violet2 to-violet1 h-16">
 <div class="flex items-center">
     <img src="img/logo.png" alt="logo" class="h-8 w-8 mr-2">
-    <span class="text-black text-xl font-semibold">Inventario</span>
+    <span class="text-white text-xl font-semibold">Inventario</span>
 </div>
 
 <!-- Menú para dispositivos móviles -->
@@ -22,8 +22,8 @@
             <img src="img/search-icon.png" alt="search-icon" class="h-4 w-4">
         </button>
     </form>
-
-    <a href="#" class="text-white hover:underline">Productos</a>
+    <a href="dashboard.php" class="text-white hover:underline">Dashboard</a>
+    <a href="products.php" class="text-white hover:underline">Productos</a>
     <a href="users_list.php" class="text-white hover:underline">Usuarios</a>
     <a href="#" class="hidden sm:inline text-white hover:underline">Info</a>
 
