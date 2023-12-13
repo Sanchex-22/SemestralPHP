@@ -30,7 +30,7 @@
     <div class="flex items-center ml-4 bg-white rounded-full p-2">
         <span class="hidden sm:inline text-black font-bold uppercase"><?php echo $_SESSION["user_name"]?></span>
         <form class="ml-2" action="logout.php" method="post">
-            <button type="submit" value="Logout" class="btn-logout bg-red-500 rounded-full p-1">
+            <button type="submit" value="Logout" class="btn-logout bg-red-500 text-white rounded-full p-1">
                 Logout
             </button>
         </form>
@@ -47,7 +47,8 @@
         </button>
     </div>
     <div class="flex flex-col items-center">
-        <a href="#" class="text-white hover:underline py-2">Productos</a>
+    <a href="dashboard.php" class="text-white hover:underline py-2">Dashboard</a>
+        <a href="products.php" class="text-white hover:underline py-2">Productos</a>
         <a href="users_list.php" class="text-white hover:underline py-2">Usuarios</a>
         <a href="#" class="text-white hover:underline py-2">Info</a>
         <!-- Agrega más enlaces según sea necesario -->

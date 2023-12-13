@@ -17,6 +17,8 @@ $username = $_SESSION["user_name"];
 </head>
 <body>
   <?php require_once("components/navbar.php")?>
+  <h2>Usuarios Registrados</h2>
+  <div></div>
   <div class="flex flex-col h-screen" >
     <style>
       .scroll-container {

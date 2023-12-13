@@ -70,7 +70,7 @@ $username = $_SESSION["user_name"];
       </div>
 
       <!-- BOX2 -->
-      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2 ml-2">
+      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2 md:ml-2">
         <div class="flex flex-col justify-center items-center">
           <div><h2 class="pb-2">Calendario</h2></div>
           <div class="w-full md:w-[500px] shadow-sm ">

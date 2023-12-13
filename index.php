@@ -19,6 +19,10 @@
     
             <form id="loginForm" class="bg-white formulario flex flex-col justify-center items-center p-10" action="" method="post">
                 <h2 class="text-center mb-6">Login</h2>
+
+                <div class="mb-6 w-full flex justify-center items-center">
+                    <img src="./img/logo.png" alt="" class="w-[50px] h-[50px]">
+                </div>
     
                 <div class="mb-6 w-full">
                     <label for="username">Usuario</label>

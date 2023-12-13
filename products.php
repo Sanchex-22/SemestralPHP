@@ -63,11 +63,11 @@ $username = $_SESSION["user_name"];
         </div>
       </div>
       <!-- BOX2 -->
-      <div class="md:w-3/4 md:shadow-xl ml-8">
+      <div class="w-full md:w-3/4 md:shadow-xl md:ml-8">
 
       <div class="flex flex-wrap justify-between align-center dark:text-gray-500 pr-5 pl-5 pt-2 pb-2">
           <div class="flex justify-center align-center">
-          <form name="categoryform" action="" method="GET" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
+          <form name="categoryform" action="" method="GET" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center">
             <select
                 id="category_filter"
                 name="category_filter"
@@ -79,19 +79,16 @@ $username = $_SESSION["user_name"];
                 <option value="linea blanca">Linea Blanca</option>
                 <option value="otros">Otra</option>
             </select>
-            <button type="submit" name="submit_category" class="bg-white w-full flex justify-center items-center" title="Enviar">Enviar</button>
+            <button type="submit" name="submit_category" class="bg-white w-full flex justify-center items-center bg-violet2 text-white rounded-xl" title="Enviar">Enviar</button>
         </form>
           </div>
           <div class="flex justify-center align-center">
-            <form name="formsearch" action="" class="flex text-gray-400 rounded-sm mr-5 bg-white p-1 justify-center border border-green-300">
-                <input placeholder="search" 
-                  id="search" name="search" 
-                  type="search" defaultValue='search' 
-                  class="text-gray-400 rounded-sm" 
-                  value=''/>
-                <button type="submit" value="search" class="bg-white w-full flex justify-center items-center" title="Enviar">
-                </button>
-            </form>
+          <form name="formsearch" action="" class="flex items-center text-gray-400 bg-white rounded-sm border border-black">
+            <input placeholder="Buscar" id="search" name="search" type="search" class="text-gray-400 rounded-sm p-1" value=''>
+            <button type="submit" value="search" class="bg-white p-1">
+                <img src="./img/lupa.png" class="h-4 w-4">
+            </button>
+        </form>
           </div>
     </div>
       <div class="scroll-container ">
