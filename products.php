@@ -40,7 +40,7 @@ $username = $_SESSION["user_name"];
   </style>
   
   <div class="flex flex-col" >
-    <?php require_once("navbar.php")?>
+    <?php require_once("components/navbar.php")?>
 
     <script type="module">
             import { Graficas } from './graficas.js';
@@ -52,7 +52,7 @@ $username = $_SESSION["user_name"];
     
     <div class="col md:flex justify-between">
       <!-- BOX1 -->
-      <div class="hidden sm:block md:w-1/4 flex flex-col shadow-xl shadow-violet2 text-center">
+      <div class="hidden sm:block md:w-1/4 flex flex-col shadow-sm shadow-violet2 text-center">
         <div>
           <h2>Productos en Stock</h2>
           <div id="miGrafica" class="flex justify-center items-center pt-5 pr-2 pl-2"></div>
@@ -63,7 +63,7 @@ $username = $_SESSION["user_name"];
         </div>
       </div>
       <!-- BOX2 -->
-      <div class="md:w-3/4 md:shadow-xl md:shadow-black ml-8">
+      <div class="md:w-3/4 md:shadow-xl ml-8">
 
       <div class="flex flex-wrap justify-between align-center dark:text-gray-500 pr-5 pl-5 pt-2 pb-2">
           <div class="flex justify-center align-center">

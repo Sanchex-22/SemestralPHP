@@ -6,8 +6,7 @@
         public $user_name;
         public $password;
 
-        public function __construct($db)
-        {
+        public function __construct($db){
             $this->conn = $db;
         }
 

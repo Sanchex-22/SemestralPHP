@@ -6,12 +6,14 @@
         public $name;
         public $description;
         public $quantity;
-        public $cantidad;
         public $create_date;
         public $modified_date;
+        // 
+        public $price;
+        public $create_by;
+        public $img_url;
 
-        public function __construct($db)
-        {
+        public function __construct($db){
             $this->conn = $db;
         }
 

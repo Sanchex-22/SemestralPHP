@@ -16,7 +16,7 @@ $username = $_SESSION["user_name"];
     <script src="lib/tailwind_config.js"></script>
 </head>
 <body>
-  <?php require_once("navbar.php")?>
+  <?php require_once("components/navbar.php")?>
   <div class="flex flex-col h-screen" >
     <style>
       .scroll-container {
@@ -49,11 +49,11 @@ $username = $_SESSION["user_name"];
       
       <div class="flex items-center">
         <div class="mr-2">
-          <img class="w-10 h-10" src="" alt="" />
+          <img class="w-10 h-10" src="./img/user_logo.png" alt="" />
         </div>
 
         <div>
-            <div><?php echo $producto['id']?></div>
+            <div>#<?php echo $producto['id']?></div>
             <div><?php echo $producto['user_name']?></div>
         </div>
       </div>

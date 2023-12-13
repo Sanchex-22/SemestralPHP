@@ -19,7 +19,7 @@
     <form name="formsearch" action="" class="flex items-center text-gray-400 bg-white rounded-sm border border-green-300">
         <input placeholder="Buscar" id="search" name="search" type="search" class="text-gray-400 rounded-sm p-1" value=''>
         <button type="submit" value="search" class="bg-white p-1">
-            <img src="img/search-icon.png" alt="search-icon" class="h-4 w-4">
+            <img src="./img/lupa.png" class="h-4 w-4">
         </button>
     </form>
     <a href="dashboard.php" class="text-white hover:underline">Dashboard</a>

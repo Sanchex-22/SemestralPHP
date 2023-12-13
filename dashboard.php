@@ -38,7 +38,7 @@ $username = $_SESSION["user_name"];
       }
 
   </style>
-  <?php require_once("navbar.php")?>
+  <?php require_once("components/navbar.php")?>
   <div class="flex flex-col p-2">
 
     <script type="module">
@@ -48,12 +48,17 @@ $username = $_SESSION["user_name"];
             graficasI.xNombre();
     </script>
     
-    <div><h1 class="text-2xl font-bold">Bienvenido <?php echo  $_SESSION["user_name"];?></h1></div>
+    <div class="flex justify-start align-center text-center rounded-xl bg-violet1 p-2">
+      <div class="rounded-full w-8 h-8 bg-black mr-4"></div>
+      <div>
+        <h1 class="text-white text-center text-2xl font-bold ">Bienvenido <?php echo  $_SESSION["user_name"];?></h1>
+      </div>
+    </div>
 
     <div class="col md:flex justify-between">
 
       <!-- BOX1 -->
-      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2">
+      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2 mr-2">
         <div class="">
           <h2 class="pb-2">Productos en Stock</h2>
           <div id="miGrafica" class="flex justify-center items-center pt-5 pr-2 pl-2"></div>
@@ -65,11 +70,11 @@ $username = $_SESSION["user_name"];
       </div>
 
       <!-- BOX2 -->
-      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2">
+      <div class="w-full flex flex-col shadow-xl shadow-violet2 text-center pt-2 ml-2">
         <div class="flex flex-col justify-center items-center">
           <div><h2 class="pb-2">Calendario</h2></div>
-          <div class="w-full md:w-[500px]">
-            <?php require_once('calendar.php')?>
+          <div class="w-full md:w-[500px] shadow-sm ">
+            <?php require_once('components/calendar.php')?>
           </div>
         </div>
       </div>

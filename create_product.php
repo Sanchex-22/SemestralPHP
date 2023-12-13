@@ -16,7 +16,7 @@ $username = $_SESSION["user_name"];
     <script src="lib/tailwind_config.js"></script>
 </head>
 <body>
-    <?php require_once("navbar.php")?>
+    <?php require_once("components/navbar.php")?>
     <div class="flex flex-col h-screen" >
 
         <div>
