@@ -25,7 +25,7 @@
     <a href="dashboard.php" class="text-white hover:underline">Dashboard</a>
     <a href="products.php" class="text-white hover:underline">Productos</a>
     <a href="users_list.php" class="text-white hover:underline">Usuarios</a>
-    <a href="#" class="hidden sm:inline text-white hover:underline">Info</a>
+    <a href="info.php" class="hidden sm:inline text-white hover:underline">Info</a>
 
     <div class="flex items-center ml-4 bg-white rounded-full p-2">
         <span class="hidden sm:inline text-black font-bold uppercase"><?php echo $_SESSION["user_name"]?></span>
@@ -50,7 +50,12 @@
     <a href="dashboard.php" class="text-white hover:underline py-2">Dashboard</a>
         <a href="products.php" class="text-white hover:underline py-2">Productos</a>
         <a href="users_list.php" class="text-white hover:underline py-2">Usuarios</a>
-        <a href="#" class="text-white hover:underline py-2">Info</a>
+        <a href="info.php" class="text-white hover:underline py-2">Info</a>
+        <form class="ml-2" action="logout.php" method="post">
+            <button type="submit" value="Logout" class="btn-logout text-white rounded-full p-1">
+                Logout
+            </button>
+        </form>
         <!-- Agrega más enlaces según sea necesario -->
     </div>
 </div>

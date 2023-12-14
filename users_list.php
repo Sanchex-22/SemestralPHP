@@ -17,8 +17,27 @@ $username = $_SESSION["user_name"];
 </head>
 <body>
   <?php require_once("components/navbar.php")?>
-  <h2>Usuarios Registrados</h2>
-  <div></div>
+  <div class="bg-white p-8 rounded shadow-md text-center">
+  <h2 class="text-2xl font-bold text-black mb-2">Usuarios Registrados</h2>
+    <?php
+      $api_url = "http://localhost/SemestralPHP/api/user/getNumberUser.php";
+      $context = stream_context_create([
+        'http' => [
+          'method' => 'GET',
+          'header' => 'Content-Type: application/json',
+        ],
+      ]);
+
+      $response = file_get_contents($api_url, false, $context);
+      if ($response === FALSE) {
+        die('Error al realizar la solicitud GET');
+      }
+      $json_response = json_decode($response, true);
+      $totalUsuarios = $json_response['number_u'];
+    ?>
+    <h1 class="text-green-500 text-2xl font-bold mb-2">Total de usuarios: <?php echo $totalUsuarios; ?></h1>
+    <p class="text-gray-500">¡Gracias por ser parte de nuestra comunidad!</p>
+  </div>
   <div class="flex flex-col h-screen" >
     <style>
       .scroll-container {
@@ -66,6 +85,7 @@ $username = $_SESSION["user_name"];
       
     </div>
     <?php endforeach; ?>
+
     </div>
     
     <!-- <div class="fixed bottom-4 right-8 rounded-xl bg-violet2 w-[70px] h-[70px] text-white hover:bg-violet3 hover:text-white">

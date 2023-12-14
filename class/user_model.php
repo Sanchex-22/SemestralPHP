@@ -17,6 +17,20 @@
             return $stmt;
         }
 
+        public function getNumberUsers(){
+            try {
+                $sql = "CALL CountUsers()";
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute();
+                
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+                return $result['TotalUsers'];
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        }
+
         public function getOneUsers($id){
             $sql = "SELECT * FROM User WHERE id = :id";
             $stmt = $this->conn->prepare($sql);
