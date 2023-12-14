@@ -24,3 +24,16 @@ Create Table User(
  use inventario;
  select*from products;
   select*from user;
+  
+use inventario;
+DELIMITER //
+CREATE PROCEDURE CountUsers()
+BEGIN
+    DECLARE userCount INT;
+
+    SELECT COUNT(*) INTO userCount
+    FROM User;
+
+    SELECT userCount AS TotalUsers;
+END //
+DELIMITER ;
